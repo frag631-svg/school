@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+    <title>Школьный журнал - Панель учителя</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container" id="instruction-container">
+        <div class="logo">
+            <img src="Рисунок1.png" alt="Логотип школы" id="school-logo">
+            <center><h1>Школьный журнал</h1></center>
+        </div>
+        <div class="card">
+            <h2>Инструкция по использованию</h2>
+            <div class="instructions">
+                <p>1. Для начала работы зарегистрируйтесь или войдите в систему.</p>
+                <p>2. После входа вы попадёте в панель управления учителя.</p>
+                <p>3. Выберите класс для работы с учениками.</p>
+                <p>4. В таблице успеваемости вы можете:</p>
+                <ul>
+                    <li>Добавлять/удалять учеников</li>
+                    <li>Редактировать оценки по предметам</li>
+                    <li>Добавлять/удалять предметы</li>
+                    <li>Просматривать средний балл и статус ученика</li>
+                </ul>
+                <p>5. Все изменения сохраняются автоматически.</p>
+                <p>6. Для выхода из системы нажмите кнопку "Выйти".</p>
+            </div>
+            <button id="start-btn" class="btn">Начать работу</button>
+        </div>
+    </div>
+
+    <div class="container hidden" id="auth-container">
+        <div class="logo">
+            <img src="Рисунок1.png" alt="Логотип школы" id="school-logo">
+            <h1>Школьный журнал</h1>
+        </div>
+        <div class="card">
+            <div id="register-form">
+                <h2>Регистрация учителя</h2>
+                <div class="form-group">
+                    <label for="reg-name">ФИО:</label>
+                    <input type="text" id="reg-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">Email:</label>
+                    <input type="email" id="reg-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-password">Пароль:</label>
+                    <input type="password" id="reg-password" required>
+                </div>
+                <button id="register-btn" class="btn">Зарегистрироваться</button>
+                <p>Уже есть аккаунт? <a href="#" id="show-login">Войти</a></p>
+            </div>
+
+            <div id="login-form" class="hidden">
+                <h2>Вход в систему</h2>
+                <div class="form-group">
+                    <label for="login-email">Email:</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Пароль:</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button id="login-btn" class="btn">Войти</button>
+                <p>Нет аккаунта? <a href="#" id="show-register">Зарегистрироваться</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container hidden" id="main-container">
+        <header>
+            <div class="logo">
+                <img src="Рисунок1.png" alt="Логотип школы" id="school-logo">
+                <h1>Школьный журнал</h1>
+            </div>
+            <div class="user-info">
+                <span id="user-name"></span>
+                <button id="logout-btn" class="btn btn-small">Выйти</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="class-selector">
+                <h2>Выберите класс:</h2>
+                <select id="class-select">
+                    <option value="2">2 класс</option>
+                    <option value="3">3 класс</option>
+                    <option value="4">4 класс</option>
+                    <option value="5">5 класс</option>
+                    <option value="6">6 класс</option>
+                    <option value="7">7 класс</option>
+                    <option value="8">8 класс</option>
+                </select>
+                <button id="add-student-btn" class="btn">Добавить ученика</button>
+            </div>
+
+            <div class="student-form hidden" id="student-form">
+                <h3>Добавить ученика</h3>
+                <div class="form-group">
+                    <label for="student-name">ФИО ученика:</label>
+                    <input type="text" id="student-name" required>
+                </div>
+                <button id="save-student-btn" class="btn">Сохранить</button>
+                <button id="cancel-student-btn" class="btn btn-cancel">Отмена</button>
+            </div>
+
+            <div class="subject-controls">
+                <button id="add-subject-btn" class="btn">Добавить предмет</button>
+                <button id="remove-subject-btn" class="btn btn-cancel">Удалить предмет</button>
+            </div>
+
+            <div class="table-container">
+                <table id="grades-table">
+                    <thead>
+                        <tr>
+                            <th>Ученик</th>
+                            <!-- Subjects will be added here dynamically -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Students and grades will be added here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+      
+   <div class="gallery-container">
+        <div id="gallery" class="gallery">
+            <!-- Галерея будет заполняться динамически -->
+        </div>
+
+        <div class="controls">
+            <button id="add-btn" class="btn">Добавить фото</button>
+            <input type="file" id="file-input" class="hidden" accept="image/*">
+        </div>
+        </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
